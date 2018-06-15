@@ -21,7 +21,7 @@
 <!--                     	<keepContainer>true</keepContainer>
                     	<keepRunning>true</keepRunning> -->
 						<dockerHost>https://192.168.99.101:2376</dockerHost>
-						<certPath>src/main/dockerCerts</certPath>
+						<certPath>C:\Users\home\.docker\machine\machines\dev</certPath>
 						<useColor>true</useColor> 
 						<dockerDirectory>src/main/resources/docker</dockerDirectory>   
 						<machine>
