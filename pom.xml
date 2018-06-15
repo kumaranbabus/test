@@ -18,8 +18,8 @@
                     <version>0.26.0</version>
                     <configuration>
                     
-<!--                     	<keepContainer>true</keepContainer>
-                    	<keepRunning>true</keepRunning> -->
+                     	<keepContainer>true</keepContainer>
+                    	<keepRunning>true</keepRunning>
 						<dockerHost>https://192.168.99.101:2376</dockerHost>
 						<!-- <certPath></certPath> -->
 						<useColor>true</useColor>    
@@ -33,21 +33,19 @@
                                 <name>hello-java</name>
                                 <alias>hellojava</alias>
                                 <build>
-                                
-<!--                                     <from>openjdk:latest</from>
+                                	<from>openjdk:latest</from>
                                     <assembly>
                                         <descriptorRef>artifact</descriptorRef>
-                                    </assembly> -->
-                                    <dockerFileDir>D:\GITHUB\test</dockerFileDir>
+                                    </assembly>
+                                    <dockerFileDir>${project.basedir}</dockerFileDir>
                                     <!-- <cmd>java -cp maven/${project.name}-${project.version}.jar org.examples.java.App</cmd> -->
                                 </build>
-<!--                                  <run>
-                                   
+                                 <run>
                                    <wait>
-                                        <log>${project.name}-${project.version}.jar</log>
+                                        <!-- <log>${project.name}-${project.version}.jar</log> -->
                                         <time>1000</time>
                                     </wait> 
-                                </run> -->
+                                </run>
                             </image>
                         </images>
                     </configuration>
