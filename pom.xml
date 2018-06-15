@@ -9,32 +9,49 @@
   </properties>
   <profiles>
     <profile>
-        <id>docker</id>
+        <id>dev</id>
         <build>
             <plugins>
                 <plugin>
                     <groupId>io.fabric8</groupId>
                     <artifactId>docker-maven-plugin</artifactId>
-                    <version>0.22.1</version>
+                    <version>0.26.0</version>
                     <configuration>
+                    
+<!--                     	<keepContainer>true</keepContainer>
+                    	<keepRunning>true</keepRunning> -->
+						<dockerHost>https://192.168.99.101:2376</dockerHost>
+						<!-- <certPath></certPath> -->
+						<useColor>true</useColor>    
+						<machine>
+							<name>dev</name>
+							<autoCreate>false</autoCreate>
+							<regenerateCertsAfterStart>true</regenerateCertsAfterStart>
+						</machine>                
                         <images>
                             <image>
                                 <name>hello-java</name>
+                                <alias>hellojava</alias>
                                 <build>
-                                    <from>openjdk:latest</from>
+                                
+<!--                                     <from>openjdk:latest</from>
                                     <assembly>
                                         <descriptorRef>artifact</descriptorRef>
-                                    </assembly>
-                                    <cmd>java -cp maven/${project.name}-${project.version}.jar org.examples.java.App</cmd>
+                                    </assembly> -->
+                                    <dockerFileDir>D:\GITHUB\test</dockerFileDir>
+                                    <!-- <cmd>java -cp maven/${project.name}-${project.version}.jar org.examples.java.App</cmd> -->
                                 </build>
-                                <run>
-                                    <wait>
-                                        <log>Hello World!</log>
-                                    </wait>
-                                </run>
+<!--                                  <run>
+                                   
+                                   <wait>
+                                        <log>${project.name}-${project.version}.jar</log>
+                                        <time>1000</time>
+                                    </wait> 
+                                </run> -->
                             </image>
                         </images>
                     </configuration>
+
                     <executions>
                         <execution>
                             <id>docker:build</id>
@@ -48,8 +65,14 @@
                             <phase>install</phase>
                             <goals>
                                 <goal>start</goal>
-                                <goal>logs</goal>
+                                <!-- <goal>logs</goal> -->
                             </goals>
+                            <configuration>
+                            	<keepContainer>true</keepContainer>
+                            	<keepRunning>true</keepRunning>
+                            
+                                <filter>hello-java</filter> 
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
