@@ -21,7 +21,7 @@
                      	<keepContainer>true</keepContainer>
                     	<keepRunning>true</keepRunning>
 						<dockerHost>https://192.168.99.101:2376</dockerHost>
-						<!-- <certPath></certPath> -->
+						<certPath>${project.basedir}/src/main/dockerCerts</certPath>
 						<useColor>true</useColor>    
 						<machine>
 							<name>dev</name>
