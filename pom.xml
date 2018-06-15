@@ -20,7 +20,7 @@
                     
 <!--                     	<keepContainer>true</keepContainer>
                     	<keepRunning>true</keepRunning> -->
-						<dockerHost>tcp://192.168.99.101:2376</dockerHost>
+						<dockerHost>https://192.168.99.101:2376</dockerHost>
 						<!-- <certPath></certPath> -->
 						<useColor>true</useColor>    
 						<machine>
