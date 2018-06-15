@@ -20,9 +20,10 @@
                     
 <!--                     	<keepContainer>true</keepContainer>
                     	<keepRunning>true</keepRunning> -->
-						<dockerHost>tcp://192.168.99.101:2376</dockerHost>
+						<dockerHost>https://192.168.99.101:2376</dockerHost>
 						<certPath>C:\Users\home\.docker\machine\machines\dev</certPath>
-						<useColor>true</useColor>    
+						<useColor>true</useColor> 
+						<dockerDirectory>src/main/resources/docker</dockerDirectory>   
 						<machine>
 							<name>dev</name>
 							<autoCreate>false</autoCreate>
