@@ -6,7 +6,6 @@
     <properties>
     <maven.compiler.source>1.6</maven.compiler.source>
     <maven.compiler.target>1.6</maven.compiler.target>
-	
   </properties>
   <profiles>
     <profile>
@@ -43,13 +42,13 @@
                                     <dockerFileDir>D:\GITHUB\test</dockerFileDir>
                                     <!-- <cmd>java -cp maven/${project.name}-${project.version}.jar org.examples.java.App</cmd> -->
                                 </build>
-                                   <run>
+<!--                                  <run>
                                    
                                    <wait>
                                         <log>${project.name}-${project.version}.jar</log>
                                         <time>1000</time>
                                     </wait> 
-                                </run>
+                                </run> -->
                             </image>
                         </images>
                     </configuration>
