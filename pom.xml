@@ -17,7 +17,6 @@
                     <artifactId>docker-maven-plugin</artifactId>
                     <version>0.26.0</version>
                     <configuration>
-                    
                      	<keepContainer>true</keepContainer>
                     	<keepRunning>true</keepRunning>
 						<dockerHost>https://192.168.99.101:2376</dockerHost>
@@ -37,7 +36,7 @@
                                     <assembly>
                                         <descriptorRef>artifact</descriptorRef>
                                     </assembly>
-                                    <dockerFileDir>${project.basedir}</dockerFileDir>
+                                    <dockerFileDir>${project.basedir}/src/main/resources/dev</dockerFileDir>
                                     <!-- <cmd>java -cp maven/${project.name}-${project.version}.jar org.examples.java.App</cmd> -->
                                 </build>
                                  <run>
@@ -49,7 +48,6 @@
                             </image>
                         </images>
                     </configuration>
-
                     <executions>
                         <execution>
                             <id>docker:build</id>
@@ -68,7 +66,72 @@
                             <configuration>
                             	<keepContainer>true</keepContainer>
                             	<keepRunning>true</keepRunning>
-                            
+                                <filter>hello-java</filter> 
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </build>
+    </profile>
+       <profile>
+        <id>default</id>
+        <build>
+            <plugins>
+                <plugin>
+                    <groupId>io.fabric8</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>0.26.0</version>
+                    <configuration>
+                     	<keepContainer>true</keepContainer>
+                    	<keepRunning>true</keepRunning>
+						<dockerHost>https://192.168.99.100:2376</dockerHost>
+						<!-- <certPath>${project.basedir}/src/main/dockerCerts</certPath> -->
+						<useColor>true</useColor>    
+						<machine>
+							<name>dev</name>
+							<autoCreate>false</autoCreate>
+							<regenerateCertsAfterStart>true</regenerateCertsAfterStart>
+						</machine>                
+                        <images>
+                            <image>
+                                <name>hello-java</name>
+                                <alias>hellojava</alias>
+                                <build>
+                                	<from>openjdk:latest</from>
+                                    <assembly>
+                                        <descriptorRef>artifact</descriptorRef>
+                                    </assembly>
+                                    <dockerFileDir>${project.basedir}/src/main/resources/default</dockerFileDir>
+                                    <!-- <cmd>java -cp maven/${project.name}-${project.version}.jar org.examples.java.App</cmd> -->
+                                </build>
+                                 <run>
+                                   <wait>
+                                        <!-- <log>${project.name}-${project.version}.jar</log> -->
+                                        <time>1000</time>
+                                    </wait> 
+                                </run>
+                            </image>
+                        </images>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>docker:build</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>build</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>docker:start</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>start</goal>
+                                <!-- <goal>logs</goal> -->
+                            </goals>
+                            <configuration>
+                            	<keepContainer>true</keepContainer>
+                            	<keepRunning>true</keepRunning>
                                 <filter>hello-java</filter> 
                             </configuration>
                         </execution>
